@@ -82,7 +82,7 @@ class Productos:  # Clase Productos
           file, delimiter=","
         )  # Crea un objeto reader para leer los registros separados por el delimitador ","
         nombre = input(
-          "Ingrese el nombre del producto a buscar: "
+          "Ingrese el SKU del producto a buscar: "
         )  # Pide al usuario ingresar el nombre del producto a buscar
         for row in reader:  # Recorre todos los registros encontrados y almacena temporalmente cada uno en row
           if row[

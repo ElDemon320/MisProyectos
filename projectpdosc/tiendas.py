@@ -59,7 +59,7 @@ class Tiendas:  # Clase Tiendas
             with open("tiendas.csv", "w", newline="") as file: # Abre el archivo tiendas.csv en modo de escritura y lo asigna a la variable file
                 writer = csv.writer(file) # Crea un objeto writer para escribir en el archivo
                 writer.writerows(tiendas) # Escribe la lista actualizada de tiendas en el archivo
-            print(f"Tienda con no '{no}' actualizado exitosamente.") # Imprime un mensaje en la consola indicando que la tienda ha sido actualizada con éxito
+            print(f"Tienda con numero '{no}' actualizado exitosamente.") # Imprime un mensaje en la consola indicando que la tienda ha sido actualizada con éxito
             return True # Devuelve True para indicar que la actualización fue exitosa
         except Exception as e: # Si ocurre un error durante la ejecución del bloque de código, se ejecuta este bloque
             print(f"Error actualizarTienda(): {e.args}") # Imprime un mensaje en la consola indicando el tipo de error que ha ocurrido
@@ -83,7 +83,7 @@ class Tiendas:  # Clase Tiendas
     
     def borrarTienda(self) -> bool: #Metodo para borrar una tienda
         print("Borrar Tienda") #Imprime para que se note que se esta llamando al metodo borrarTienda()
-        no = input("Ingrese el no del tienda que desea borrar: ") # Pide al usuario el no del tienda que desea borrar
+        no = input("Ingrese el numero de la tienda que desea borrar: ") # Pide al usuario el no del tienda que desea borrar
         try: # Prueba el código y si ocurre una excepción la atrapa
             with open("tiendas.csv", "r") as file: # Abre el archivo para tener acceso a los registros
                 reader = csv.reader(file, delimiter=",") # Crea un objeto reader para leer los registros separándolos por el delimitador ,
