@@ -39,11 +39,8 @@ class Main():  # Define una nueva clase llamada Main
             elif opcion == "3":  # Si el usuario elige la opción 3
                 self.productos.buscarProducto()  # Llama al método buscarProducto de la instancia de la clase Productos
             elif opcion == "4": # Si el usuario elige la opción 4
-                sku = input("Ingrese el SKU del producto a actualizar: ")  #Pide al usuario el nuevo sku del producto
-                nombre = input("Ingrese el nuevo nombre del producto: ") # Pide al usuario el nuevo nombre del producto
-                unidad = input("Ingrese la nueva unidad del producto: ") # Pide al usuario la nueva unidad del producto
                 print("Llamar metodo actualizarProducto()") # Imprime esta linea si entro al metodo
-                self.productos.actualizarProducto(sku, nombre, unidad) # Llama al método actualizarProductos de la instancia de la clase Productos
+                self.productos.actualizarProducto() # Llama al método actualizarProductos de la instancia de la clase Productos
             elif opcion == "5": #Si el usuario elige la opcion 5
                 self.productos.borrarProducto() # Llama al método borrarProductos de la instancia de la clase Productos
             elif opcion == "0": #Si el usuario elige la opcion 0
