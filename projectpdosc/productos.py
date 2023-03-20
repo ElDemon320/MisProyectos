@@ -107,20 +107,24 @@ class Productos:  # Clase Productos
       return False  # Regresa False si ocurrió un error en el método
 
   def borrarProducto(self) -> bool:
-    print("Borrar Producto")
-    sku = input("Ingrese el SKU del producto que desea borrar: ")  # Pide al usuario el SKU del producto que desea borrar
-    try:  # Prueba el código y si ocurre una excepción la atrapa
-      with open("productos.csv","r") as file:  # Abre el archivo para tener acceso a los registros
-        reader = csv.reader(file, delimiter=",")  # Crea un objeto reader para leer los registros separándolos por el delimitador ,
-        rows = list(reader)  # Convierte los registros a una lista de filas
-      with open("productos.csv", "w", newline="") as file:  # Abre el archivo en modo "w" para escribir los registros
-        writer = csv.writer(file, delimiter=",")  # Crea un objeto writer para escribir los registros separándolos por el delimitador ,
-        for row in rows:  # Recorre todas las filas encontradas
-          if row[0] == sku:  # Si el SKU de la fila es igual al SKU del producto a borrar, no escribe la fila en el archivo
-            print(f"Producto '{row[1]}' borrado exitosamente.")  # Imprime un mensaje indicando que el producto fue borrado exitosamente
-          else:  # Si el SKU de la fila no es igual al SKU del producto a borrar, escribe la fila en el archivo
-            writer.writerow(row) # Escribe una nueva fila en el archivo "productos.csv" con los valores que se han especificado en la lista "row".
-      return True  # Regresa True si el método se ejecutó correctamente
-    except Exception as e:  # Atrapa cualquier excepción
-      print(f"Error borrarProducto(): {e.args}")  # Muestra en consola el error que ocurrió
-      return False  # Regresa False si ocurrió un error en el método
+    print("Borrar Producto") # Imprime un mensaje en consola para indicar que se está ejecutando el método borrarProducto()
+    sku = input("Ingrese el SKU del producto que desea borrar: ") # Pide al usuario que ingrese el SKU del producto que desea borrar y lo guarda en la variable sku
+    try: # Se inicia un bloque try-except para manejar excepciones
+        with open("productos.csv", "r") as file: # Abre el archivo "productos.csv" en modo lectura y lo guarda en la variable file utilizando el manejador de contexto with
+            reader = csv.reader(file, delimiter=",") # Crea un objeto reader para leer los registros separándolos por el delimitador ","
+            rows = list(reader) # Convierte los registros a una lista de filas y la guarda en la variable rows
+        with open("productos.csv", "w", newline="") as file: # Abre el archivo "productos.csv" en modo escritura y lo guarda en la variable file utilizando el manejador de contexto with
+            writer = csv.writer(file, delimiter=",") # Crea un objeto writer para escribir los registros separándolos por el delimitador ","
+            producto_borrado = False # Inicializa la variable producto_borrado en False
+            for row in rows: # Recorre todas las filas encontradas
+                if row[0] == sku: # Si el SKU de la fila es igual al SKU del producto a borrar, no escribe la fila en el archivo
+                    print(f"Producto '{row[1]}' borrado exitosamente.") # Imprime un mensaje indicando que el producto fue borrado exitosamente
+                    producto_borrado = True # Cambia el valor de la variable producto_borrado a True
+                else: # Si el SKU de la fila no es igual al SKU del producto a borrar, escribe la fila en el archivo
+                    writer.writerow(row)
+            if not producto_borrado: # Si la variable producto_borrado sigue siendo False, significa que no se encontró ningún producto con el SKU proporcionado
+                print(f"El producto con SKU '{sku}' no existe.") # Imprime un mensaje indicando que el producto no existe
+        return True # Regresa True si el método se ejecutó correctamente
+    except Exception as e: # Atrapa cualquier excepción que se produzca durante la ejecución del método
+        print(f"Error borrarProducto(): {e.args}") # Muestra en consola el error que ocurrió
+        return False # Regresa False si ocurrió un error en el método

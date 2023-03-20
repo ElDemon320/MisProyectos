@@ -67,12 +67,7 @@ class Main():  # Define una nueva clase llamada Main
 	        elif opcion == "3":  # Si la opción seleccionada es 3
 	            self.tiendas.buscarTienda()  # Llama al método buscarTienda de la instancia de Tiendas
 	        elif opcion == "4":  # Si la opción seleccionada es 4
-	            no = input("Ingrese el numero de la tienda a actualizar: ")  # Solicita al usuario que ingrese el número de la tienda a actualizar
-	            nombre = input("Ingrese el nuevo nombre de la tienda: ")  # Solicita al usuario que ingrese el nuevo nombre de la tienda
-	            longitud = input("Ingrese la nueva longitud de la tienda: ")  # Solicita al usuario que ingrese la nueva longitud de la tienda
-	            latitud = input("Ingrese la nueva latitud de la tienda: ")  # Solicita al usuario que ingrese la nueva latitud de la tienda
-	            direccion = input("Ingrese la nueva direccion de la tienda: ")  # Solicita al usuario que ingrese la nueva dirección de la tienda
-	            self.tiendas.actualizarTienda(no, nombre, longitud, latitud, direccion)  # Llama al método actualizarTienda de la instancia de Tiendas
+	            self.tiendas.actualizarTienda()  # Llama al método actualizarTienda de la instancia de Tiendas
 	            print("Llamar metodo actualizarTiendas()")  # Imprime un mensaje indicando que se debe llamar al método actualizarTiendas
 	        elif opcion == "5":  # Si la opción seleccionada es 5
 	            self.tiendas.borrarTienda()  # Llama al método borrarTienda de la instancia de Tiendas
